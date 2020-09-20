@@ -155,6 +155,20 @@ public class UiAutomationTrainingBasicTest extends TestBase {
         //Todo - Verify Login Page Displayed
         //Todo - Verify Logout Alert Displayed
         //Todo - Verify Logout  Alert Message Content
+		softAssert = new SoftAssert();
+		softAssert.assertTrue(HomePage.isHomePageDisplayed(), "Home Page is not Displayed");
+		HomePage.clickLink(Constants.LOGIN_LINK);
+		LoginPage.setUsername(Constants.LOGIN_USER_NAME);
+		LoginPage.setPassword(Constants.LOGIN_PASSWORD);
+		LoginPage.clickSubmit();
+		softAssert.assertTrue(LoginSecurePage.isLoginSecurePageDisplayed(),"Login Secure Page is not displayed");
+		softAssert.assertTrue(LoginSecurePage.isLoginAlertDisplayed(),"Login Alert is not displayed");
+		softAssert.assertTrue(LoginSecurePage.getLoginAlertMessage().contains(Constants.LOGIN_SUCCESS_MSG),"Login Alert message is incorrect");
+		LoginSecurePage.clickLogout();
+		softAssert.assertTrue(LoginPage.isLoginPageDisplayed(),"Login Page is not displayed");
+		softAssert.assertTrue(LoginPage.isLoginAlertDisplayed(),"Logout Alert not displayed");
+		softAssert.assertTrue(LoginPage.getLoginAlertMessage().contains(Constants.LOGOUT_SUCCESS_MSG),"Logout message is incorrect");
+		softAssert.assertAll();
 	}
 
 	/**
