@@ -193,5 +193,5 @@ public class UiAutomationTrainingBasicTest extends TestBase {
 		softAssert.assertAll();
 
 	}
-	}
+
 }
