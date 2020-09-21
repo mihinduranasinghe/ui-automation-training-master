@@ -174,14 +174,15 @@ public class UiAutomationTrainingBasicTest extends TestBase {
 	/**
 	 * Verify Login Invalid Scenario
 	 */
-	@Test(groups = "test", priority = 7)
+	@Test(groups = { "test", "regression"}, priority = 7, dataProvider = "MultipleUserDetails", dataProviderClass = UserDetailsDataProvider.class)
 	public void testVerifyInvalidLogin(String username, String password) {
-        //Todo - Verify HomePage is displayed
-        //Todo - Click Login Link
-        //Todo - Set Invalid Username and Password
-        //Todo - Click Submit
-        //Todo - Verify Invalid Login Alert Displayed
-        //Todo - Verify Invalid Login  Alert Message Content
+		//TODO- SAME ACTION SHOULD BE REPEATED FOR MULTIPLE USERS
+		//Todo - Verify HomePage is displayed
+		//Todo - Click Login Link
+		//Todo - Set Invalid Username and Password
+		//Todo - Click Submit
+		//Todo - Verify Login Alert Displayed
+		//Todo - Verify Login  Alert Message
 		softAssert = new SoftAssert();
 		softAssert.assertTrue(HomePage.isHomePageDisplayed(), "Home Page is not Displayed");
 		HomePage.clickLink(Constants.LOGIN_LINK);
@@ -191,6 +192,8 @@ public class UiAutomationTrainingBasicTest extends TestBase {
 		softAssert.assertTrue(LoginPage.isLoginAlertDisplayed(),"Login Alert not displayed");
 		softAssert.assertTrue(LoginPage.getLoginAlertMessage().contains(Constants.LOGIN_INVALID_MSG),"Login message is incorrect");
 		softAssert.assertAll();
+
+
 
 	}
 
